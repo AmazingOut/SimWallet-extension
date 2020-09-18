@@ -41,3 +41,12 @@ yarn start
 yarn dist
 ```
 
+## 添加主网
+
+SimWallet钱包正在内测中，为了账户安全，SimpleChain主网络选项暂时不对外开放，请用户在自定义RPC选项中添加SIPC主网信息进行使用
+
+·网络名称：自定义
+·新增RPC URL：https://explorer.simplechain.com/rpc
+·ChainID：1
+·符号：SIPC
+·屏蔽管理器URL：https://explorer.simplechain.com
