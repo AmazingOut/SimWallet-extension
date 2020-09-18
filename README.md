@@ -43,7 +43,7 @@ yarn dist
 
 ## 添加主网
 
-SimWallet钱包正在内测中，为了账户安全，SimpleChain主网络选项暂时不对外开放，请用户在自定义RPC选项中添加SIPC主网信息进行使用
+SimWallet钱包正在内测中，为了账户安全，SimpleChain主网络选项暂时不对外开放，请用户在自定义RPC选项中添加SIPC主网信息进行使用账户导入、DAPP交互、合约交互等功能
 
 > 网络名称：自定义
 
