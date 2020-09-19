@@ -1,0 +1,733 @@
+# Query: ETH
+# Flags: CaseSensitive WordMatch
+# ContextLines: 1
+
+199 results - 34 files
+
+app/scripts/controllers/transactions/index.js:
+  337     * Creates a new approved transaction to attempt to cancel a previously submitted transaction. The
+  338:    * new transaction contains the same nonce as the previous, is a basic SIPC transfer of 0x value to
+  339     * the sender's address, and has a higher gasPrice than that of the previous transaction.
+
+app/scripts/lib/buy-eth-url.js:
+  5   * @param {string} opts.network The network for which to return a url
+  6:  * @param {string} opts.address The address the bought SIPC should be sent to.  Only relevant if network === '1'.
+  7:  * @returns {string|undefined} - The url at which the user can access SIPC, while in the given network. If the passed
+  8   * network does not match any of the specified cases, or if no network is given, returns undefined.
+
+app/scripts/lib/util.js:
+  73  /**
+  74:  * Checks whether a given balance of ETH, represented as a hex string, is sufficient to pay a value plus a gas fee
+  75   *
+
+  78   * @param {string} txParams.gasPrice The price per gas for the transaction
+  79:  * @param {string} txParams.value The value of SIPC to send
+  80:  * @param {string} hexBalance - A balance of SIPC represented as a hex string
+  81   * @returns {boolean} - Whether the balance is greater than or equal to the value plus the value of gas times gasPrice
+
+ui/app/components/app/gas-customization/gas-modal-page-container/basic-tab-content/tests/basic-tab-content-component.test.js:
+  14        feeInPrimaryCurrency: '$0.52',
+  15:       feeInSecondaryCurrency: '0.0048 ETH',
+  16        timeEstimate: '~ 1 min 0 sec',
+
+  21        feeInPrimaryCurrency: '$0.39',
+  22:       feeInSecondaryCurrency: '0.004 ETH',
+  23        timeEstimate: '~ 1 min 30 sec',
+
+  28        feeInPrimaryCurrency: '$0.30',
+  29:       feeInSecondaryCurrency: '0.00354 ETH',
+  30        timeEstimate: '~ 2 min 1 sec',
+
+ui/app/components/app/gas-customization/gas-modal-page-container/tests/gas-modal-page-container-component.test.js:
+  28        feeInPrimaryCurrency: '$0.52',
+  29:       feeInSecondaryCurrency: '0.0048 ETH',
+  30        timeEstimate: '~ 1 min 0 sec',
+
+  34        feeInPrimaryCurrency: '$0.39',
+  35:       feeInSecondaryCurrency: '0.004 ETH',
+  36        timeEstimate: '~ 1 min 30 sec',
+
+  40        feeInPrimaryCurrency: '$0.30',
+  41:       feeInSecondaryCurrency: '0.00354 ETH',
+  42        timeEstimate: '~ 2 min 1 sec',
+
+ui/app/components/app/gas-customization/gas-modal-page-container/tests/gas-modal-page-container-container.test.js:
+  147            originalTotalFiat: '637.41',
+  148:           originalTotalEth: '12.748189 ETH',
+  149            newTotalFiat: '637.41',
+  150:           newTotalEth: '12.748189 ETH',
+  151:           sendAmount: '0.45036 ETH',
+  152:           transactionFee: '12.297829 ETH',
+  153          },
+
+ui/app/components/app/gas-customization/gas-price-button-group/tests/gas-price-button-group-component.test.js:
+  20            feeInPrimaryCurrency: '$0.52',
+  21:           feeInSecondaryCurrency: '0.0048 ETH',
+  22            timeEstimate: '~ 1 min 0 sec',
+
+  26            feeInPrimaryCurrency: '$0.39',
+  27:           feeInSecondaryCurrency: '0.004 ETH',
+  28            timeEstimate: '~ 1 min 30 sec',
+
+  32            feeInPrimaryCurrency: '$0.30',
+  33:           feeInSecondaryCurrency: '0.00354 ETH',
+  34            timeEstimate: '~ 2 min 1 sec',
+
+ui/app/components/app/transaction-activity-log/tests/transaction-activity-log.component.test.js:
+   41          inlineCancelIndex={-1}
+   42:         nativeCurrency="ETH"
+   43          onCancel={() => {}}
+
+   88          inlineCancelIndex={3}
+   89:         nativeCurrency="ETH"
+   90          onCancel={() => {}}
+
+  137          inlineCancelIndex={3}
+  138:         nativeCurrency="ETH"
+  139          onCancel={() => {}}
+
+ui/app/components/app/transaction-activity-log/tests/transaction-activity-log.container.test.js:
+  20            conversionRate: 280.45,
+  21:           nativeCurrency: 'ETH',
+  22          },
+
+  24  
+  25:       assert.deepEqual(mapStateToProps(mockState), { conversionRate: 280.45, nativeCurrency: 'ETH' })
+  26      })
+
+ui/app/components/app/user-preferenced-currency-display/user-preferenced-currency-display.component.js:
+   2  import PropTypes from 'prop-types'
+   3: import { PRIMARY, SECONDARY, ETH } from '../../../helpers/constants/common'
+   4  import CurrencyDisplay from '../../ui/currency-display'
+
+  19    const prefixComponent = useMemo(() => {
+  20:     return currency === ETH && showEthLogo && (
+  21        <img
+
+ui/app/components/app/user-preferenced-currency-display/tests/user-preferenced-currency-display.component.test.js:
+  14        sinon.stub(currencyHook, 'useCurrencyDisplay').returns(['1', {}])
+  15:       sinon.stub(currencyPrefHook, 'useUserPreferencedCurrency').returns({ currency: 'ETH', decimals: 6 })
+  16      })
+
+ui/app/components/ui/currency-display/tests/currency-display.component.test.js:
+  12        currentCurrency: 'usd',
+  13:       nativeCurrency: 'ETH',
+  14        conversionRate: 280.45,
+
+ui/app/components/ui/currency-input/currency-input.component.js:
+    5  import { getValueFromWeiHex, getWeiHexFromDecimalValue } from '../../../helpers/utils/conversions.util'
+    6: import { ETH } from '../../../helpers/constants/common'
+    7  
+
+   10   * hex value in WEI. props.value, used as a default or forced value, should be a hex value, which
+   11:  * gets converted into a decimal value depending on the currency (ETH or Fiat).
+   12   */
+
+   61        : getValueFromWeiHex({
+   62:         value: hexValue, toCurrency: ETH, numberOfDecimals: 6,
+   63        })
+
+   93        : getWeiHexFromDecimalValue({
+   94:         value: decimalValue, fromCurrency: ETH, fromDenomination: ETH, conversionRate,
+   95        })
+
+  114      if (this.shouldUseFiat()) {
+  115:       // Display ETH
+  116:       currency = nativeCurrency || ETH
+  117        numberOfDecimals = 6
+
+ui/app/components/ui/currency-input/currency-input.container.js:
+   2  import CurrencyInput from './currency-input.component'
+   3: import { ETH } from '../../../helpers/constants/common'
+   4  import {
+
+  31      ...ownProps,
+  32:     nativeSuffix: nativeCurrency || ETH,
+  33      fiatSuffix: currentCurrency.toUpperCase(),
+
+ui/app/components/ui/currency-input/tests/currency-input.component.test.js:
+   25          metamask: {
+   26:           nativeCurrency: 'ETH',
+   27            currentCurrency: 'usd',
+
+   35            <CurrencyInput
+   36:             nativeSuffix="ETH"
+   37              fiatSuffix="USD"
+   38:             nativeCurrency="ETH"
+   39            />
+
+   44        assert.equal(wrapper.find('.unit-input__suffix').length, 1)
+   45:       assert.equal(wrapper.find('.unit-input__suffix').text(), 'ETH')
+   46        assert.equal(wrapper.find(CurrencyDisplay).length, 1)
+
+   48  
+   49:     it('should render properly with an ETH value', function () {
+   50        const mockStore = {
+   51          metamask: {
+   52:           nativeCurrency: 'ETH',
+   53            currentCurrency: 'usd',
+
+   63              fiatSuffix="USD"
+   64:             nativeSuffix="ETH"
+   65:             nativeCurrency="ETH"
+   66              currentCurrency="usd"
+
+   76        assert.equal(wrapper.find('.unit-input__suffix').length, 1)
+   77:       assert.equal(wrapper.find('.unit-input__suffix').text(), 'ETH')
+   78        assert.equal(wrapper.find('.unit-input__input').props().value, '1')
+
+   84          metamask: {
+   85:           nativeCurrency: 'ETH',
+   86            currentCurrency: 'usd',
+
+   96              fiatSuffix="USD"
+   97:             nativeSuffix="ETH"
+   98              useFiat
+   99:             nativeCurrency="ETH"
+  100              currentCurrency="usd"
+
+  118          metamask: {
+  119:           nativeCurrency: 'ETH',
+  120            currentCurrency: 'usd',
+
+  130              fiatSuffix="USD"
+  131:             nativeSuffix="ETH"
+  132              useFiat
+  133              hideFiat
+  134:             nativeCurrency="ETH"
+  135              currentCurrency="usd"
+
+  149        assert.equal(wrapper.find('.unit-input__suffix').length, 1)
+  150:       assert.equal(wrapper.find('.unit-input__suffix').text(), 'ETH')
+  151        assert.equal(wrapper.find('.unit-input__input').props().value, '0.004328')
+
+  164  
+  165:     it('should call onChange on input changes with the hex value for ETH', function () {
+  166        const mockStore = {
+  167          metamask: {
+  168:           nativeCurrency: 'ETH',
+  169            currentCurrency: 'usd',
+
+  177              onChange={handleChangeSpy}
+  178:             suffix="ETH"
+  179:             nativeCurrency="ETH"
+  180              currentCurrency="usd"
+
+  207          metamask: {
+  208:           nativeCurrency: 'ETH',
+  209            currentCurrency: 'usd',
+
+  218              suffix="USD"
+  219:             nativeCurrency="ETH"
+  220              currentCurrency="usd"
+
+  248          metamask: {
+  249:           nativeCurrency: 'ETH',
+  250            currentCurrency: 'usd',
+
+  259              suffix="USD"
+  260:             nativeCurrency="ETH"
+  261              currentCurrency="usd"
+
+  283          metamask: {
+  284:           nativeCurrency: 'ETH',
+  285            currentCurrency: 'usd',
+
+  293              onChange={handleChangeSpy}
+  294:             nativeSuffix="ETH"
+  295              fiatSuffix="USD"
+  296:             nativeCurrency="ETH"
+  297              currentCurrency="usd"
+
+ui/app/components/ui/currency-input/tests/currency-input.container.test.js:
+   25              currentCurrency: 'usd',
+   26:             nativeCurrency: 'ETH',
+   27              preferences: {
+
+   40            currentCurrency: 'usd',
+   41:           nativeCurrency: 'ETH',
+   42            hideFiat: false,
+
+   52              currentCurrency: 'usd',
+   53:             nativeCurrency: 'ETH',
+   54              preferences: {
+
+   67            currentCurrency: 'usd',
+   68:           nativeCurrency: 'ETH',
+   69            hideFiat: true,
+
+   79              currentCurrency: 'usd',
+   80:             nativeCurrency: 'ETH',
+   81              preferences: {
+
+   94            currentCurrency: 'usd',
+   95:           nativeCurrency: 'ETH',
+   96            hideFiat: false,
+
+  106              currentCurrency: 'usd',
+  107:             nativeCurrency: 'ETH',
+  108              preferences: {
+
+  121            currentCurrency: 'usd',
+  122:           nativeCurrency: 'ETH',
+  123            hideFiat: false,
+
+  144              currentCurrency: 'usd',
+  145:             nativeCurrency: 'ETH',
+  146            },
+
+  152            currentCurrency: 'usd',
+  153:           nativeCurrency: 'ETH',
+  154            // useFiat: true,
+  155:           nativeSuffix: 'ETH',
+  156            fiatSuffix: 'USD',
+
+  165              currentCurrency: 'usd',
+  166:             nativeCurrency: 'ETH',
+  167            },
+
+  173            currentCurrency: 'usd',
+  174:           nativeCurrency: 'ETH',
+  175            useFiat: true,
+  176:           nativeSuffix: 'ETH',
+  177            fiatSuffix: 'USD',
+
+ui/app/components/ui/token-input/token-input.component.js:
+    7  import { conversionUtil, multiplyCurrencies } from '../../../helpers/utils/conversion-util'
+    8: import { ETH } from '../../../helpers/constants/common'
+    9  
+
+  101      } else {
+  102:       // Display ETH
+  103:       currency = ETH
+  104        numberOfDecimals = 6
+
+  109        value: decimalEthValue,
+  110:       fromCurrency: ETH,
+  111:       fromDenomination: ETH,
+  112      })
+
+ui/app/components/ui/token-input/tests/token-input.component.test.js:
+   81  
+   82:     it('should render properly with a token value for ETH', function () {
+   83        const mockStore = {
+
+  199  
+  200:     it('should call onChange on input changes with the hex value for ETH', function () {
+  201        const mockStore = {
+
+ui/app/components/ui/unit-input/unit-input.component.js:
+  6  /**
+  7:  * Component that attaches a suffix or unit of measurement trailing user input, ex. 'ETH'. Also
+  8   * allows rendering a child component underneath the input to, for example, display conversions of
+
+ui/app/components/ui/unit-input/tests/unit-input.component.test.js:
+  20          <UnitInput
+  21:           suffix="ETH"
+  22          />,
+
+  26        assert.equal(wrapper.find('.unit-input__suffix').length, 1)
+  27:       assert.equal(wrapper.find('.unit-input__suffix').text(), 'ETH')
+  28      })
+
+ui/app/ducks/gas/gas-duck.test.js:
+  294          window.fetch.getCall(0).args[0].startsWith('https://ethgasstation.info/json/ethgasAPI.json'),
+  295:         'should fetch ETH Gas Station',
+  296        )
+
+  383          window.fetch.getCall(0).args[0].startsWith('https://ethgasstation.info/json/ethgasAPI.json'),
+  384:         'should fetch ETH Gas Station',
+  385        )
+
+  427          window.fetch.getCall(0).args[0].startsWith('https://ethgasstation.info/json/ethgasAPI.json'),
+  428:         'should fetch ETH Gas Station',
+  429        )
+
+  538          window.fetch.getCall(0).args[0].startsWith('https://ethgasstation.info/json/ethgasAPI.json'),
+  539:         'should fetch ETH Gas Station',
+  540        )
+
+  589          window.fetch.getCall(0).args[0].startsWith('https://ethgasstation.info/json/predictTable.json'),
+  590:         'should fetch ETH Gas Station',
+  591        )
+
+ui/app/helpers/constants/common.js:
+  1: export const ETH = 'SIPC'
+  2  export const GWEI = 'GWEI'
+
+ui/app/helpers/utils/confirm-tx.util.test.js:
+   95    describe('getValueFromWeiHex', function () {
+   96:     it('should get the transaction amount in ETH', function () {
+   97        const ethTransactionAmount = utils.getValueFromWeiHex({
+   98:         value: '0xde0b6b3a7640000', toCurrency: 'ETH', conversionRate: 468.58, numberOfDecimals: 6,
+   99        })
+
+  113    describe('getTransactionFee', function () {
+  114:     it('should get the transaction fee in ETH', function () {
+  115        const ethTransactionFee = utils.getTransactionFee({
+  116:         value: '0x1319718a5000', toCurrency: 'ETH', conversionRate: 468.58, numberOfDecimals: 6,
+  117        })
+
+ui/app/helpers/utils/conversion-util.js:
+   8  * @param {Object} [options] Options to specify details of the conversion
+   9: * @param {string} [options.fromCurrency = 'SIPC' | 'USD'] The currency of the passed value
+  10: * @param {string} [options.toCurrency = 'SIPC' | 'USD'] The desired currency of the result
+  11  * @param {string} [options.fromNumericBase = 'hex' | 'dec' | 'BN'] The numeric basic of the passed value.
+
+ui/app/helpers/utils/conversion-util.test.js:
+  25        const conv1 = conversionUtil(1000000000000000000, { fromNumericBase: 'dec', toNumericBase: 'hex' })
+  26:       const conv2 = conversionUtil(1, { fromNumericBase: 'dec', fromDenomination: 'ETH', toDenomination: 'WEI' })
+  27        assert(typeof conv1 === 'string', 'conversion 1 should return type string')
+
+  37      })
+  38:     it('Converts WEI to ETH', function () {
+  39:       assert.equal(conversionUtil('0xde0b6b3a7640000', { fromNumericBase: 'hex', toNumericBase: 'dec', fromDenomination: 'WEI', toDenomination: 'ETH' }), 1)
+  40:       assert.equal(conversionUtil('0x14d1120d7b160000', { fromNumericBase: 'hex', toNumericBase: 'dec', fromDenomination: 'WEI', toDenomination: 'ETH' }), 1.5)
+  41      })
+  42:     it('Converts ETH to WEI', function () {
+  43:       assert.equal(conversionUtil('1', { fromNumericBase: 'dec', fromDenomination: 'ETH', toDenomination: 'WEI' }), 1000000000000000000)
+  44:       assert.equal(conversionUtil('1.5', { fromNumericBase: 'dec', fromDenomination: 'ETH', toDenomination: 'WEI' }), 1500000000000000000)
+  45      })
+  46:     it('Converts ETH to GWEI', function () {
+  47:       assert.equal(conversionUtil('1', { fromNumericBase: 'dec', fromDenomination: 'ETH', toDenomination: 'GWEI' }), 1000000000)
+  48:       assert.equal(conversionUtil('1.5', { fromNumericBase: 'dec', fromDenomination: 'ETH', toDenomination: 'GWEI' }), 1500000000)
+  49      })
+  50:     it('Converts ETH to USD', function () {
+  51        assert.equal(conversionUtil('1', { fromNumericBase: 'dec', toNumericBase: 'dec', toCurrency: 'usd', conversionRate: 468.58, numberOfDecimals: 2 }), 468.58)
+
+  53      })
+  54:     it('Converts USD to ETH', function () {
+  55        assert.equal(conversionUtil('468.58', { fromNumericBase: 'dec', toNumericBase: 'dec', toCurrency: 'usd', conversionRate: 468.58, numberOfDecimals: 2, invertConversionRate: true }), 1)
+
+ui/app/helpers/utils/conversions.util.js:
+   1  import ethUtil from 'ethereumjs-util'
+   2: import { ETH, GWEI, WEI } from '../constants/common'
+   3  import { conversionUtil, addCurrencies, subtractCurrencies } from './conversion-util'
+
+  22  
+  23: export function getEthConversionFromWeiHex ({ value, fromCurrency = ETH, conversionRate, numberOfDecimals = 6 }) {
+  24    const denominations = [fromCurrency, GWEI, WEI]
+
+  48    value,
+  49:   fromCurrency = ETH,
+  50    toCurrency,
+
+  76      toNumericBase: 'hex',
+  77:     toCurrency: ETH,
+  78      fromCurrency,
+
+ui/app/helpers/utils/metametrics.util.js:
+  125    * @returns {string} - Returns a url to be passed to fetch to make the appropriate request to matomo.
+  126: ud/piwik.php?idsite=1&rec=1&apiv=1&e_c=Navigation&e_a=Home&e_n=Clicked%20Send:%20Eth&urlref=http%3A%2F%2Fwww.metamask.io%2Fmetametrics%2Fhome.html%23send&dimension5=3&dimension6=fullscreen&dimension7=SIPC&dimension8=default&dimension9=0&dimension10=3&url=http%3A%2F%2Fwww.metamask.io%2Fmetametrics%2Fhome.html%23&_id=49c10aff19795e9a&rand=7906028754863992&pv_id=53acad&uid=49c1
+  127    */
+
+ui/app/helpers/utils/util.test.js:
+  177  
+  178:     it('should return 1.0000 ETH', function () {
+  179        const input = new ethUtil.BN(ethInWei, 10).toJSON()
+  180        const result = util.formatBalance(input, 4)
+  181:       assert.equal(result, '1.0000 ETH')
+  182      })
+  183  
+  184:     it('should return 0.500 ETH', function () {
+  185        const input = new ethUtil.BN(ethInWei, 10).div(new ethUtil.BN('2', 10)).toJSON()
+  186        const result = util.formatBalance(input, 3)
+  187:       assert.equal(result, '0.500 ETH')
+  188      })
+
+  192        const result = util.formatBalance(input, 2)
+  193:       assert.equal(result, '1.33 ETH')
+  194      })
+
+  197        const result = util.formatBalance(input)
+  198:       assert.equal(result, '1.337 ETH')
+  199      })
+
+  202        const result = util.formatBalance(input)
+  203:       assert.equal(result, '0.00032 ETH')
+  204      })
+  205:     it('should not parse the balance and return value with 2 decimal points with ETH at the end', function () {
+  206        const value = '1.2456789'
+
+  208        const result = util.formatBalance(value, 2, needsParse)
+  209:       assert.equal(result, '1.24 ETH')
+  210      })
+
+ui/app/hooks/useUserPreferencedCurrency.js:
+   2  import { useSelector } from 'react-redux'
+   3: import { PRIMARY, SECONDARY, ETH } from '../helpers/constants/common'
+   4  
+
+   9   * @property {number} [ethNumberOfDecimals]  - Number of significant decimals to display
+  10:  *                                             when using SIPC
+  11   * @property {number} [fiatNumberOfDecimals] - Number of significant decimals to display
+
+  17   * @typedef {Object} UserPreferredCurrency
+  18:  * @property {string} currency         - the currency type to use (eg: 'SIPC', 'usd')
+  19   * @property {number} numberOfDecimals - Number of significant decimals to display
+
+  41      (type === SECONDARY && !useNativeCurrencyAsPrimaryCurrency)) {
+  42:     // Display ETH
+  43:     currency = nativeCurrency || ETH
+  44      numberOfDecimals = opts.numberOfDecimals || opts.ethNumberOfDecimals || 6
+
+ui/app/hooks/tests/useCurrencyDisplay.test.js:
+   34        value: '0x1193461d01595930',
+   35:       currency: 'ETH',
+   36        numberOfDecimals: 3,
+
+   39        value: '1.266',
+   40:       suffix: 'ETH',
+   41:       displayValue: '1.266 ETH',
+   42      },
+
+   46        value: '0x1193461d01595930',
+   47:       currency: 'ETH',
+   48        numberOfDecimals: 3,
+
+   59        value: '0x3b9aca00',
+   60:       currency: 'ETH',
+   61        denomination: 'GWEI',
+
+   72        value: '0x3b9aca00',
+   73:       currency: 'ETH',
+   74        denomination: 'WEI',
+
+   85        value: '0x3b9aca00',
+   86:       currency: 'ETH',
+   87        numberOfDecimals: 100,
+
+  106          } else if (selector === getNativeCurrency) {
+  107:           return 'ETH'
+  108          } else if (selector === getConversionRate) {
+
+ui/app/hooks/tests/useTransactionDisplayData.test.js:
+   15  const expectedResults = [
+   16:   { title: 'Send ETH',
+   17      category: 'send',
+
+   20      date: 'May 12',
+   21:     primaryCurrency: '-1 ETH',
+   22      senderAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   23      recipientAddress: '0xffe5bc4e8f1f969934d773fa67da095d2e491a97',
+   24:     secondaryCurrency: '-1 ETH',
+   25      isPending: false,
+   26      status: 'confirmed' },
+   27:   { title: 'Send ETH',
+   28      category: 'send',
+
+   31      date: 'May 12',
+   32:     primaryCurrency: '-2 ETH',
+   33      senderAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   34      recipientAddress: '0x0ccc8aeeaf5ce790f3b448325981a143fdef8848',
+   35:     secondaryCurrency: '-2 ETH',
+   36      isPending: false,
+   37      status: 'confirmed' },
+   38:   { title: 'Send ETH',
+   39      category: 'send',
+
+   42      date: 'May 12',
+   43:     primaryCurrency: '-2 ETH',
+   44      senderAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   45      recipientAddress: '0xffe5bc4e8f1f969934d773fa67da095d2e491a97',
+   46:     secondaryCurrency: '-2 ETH',
+   47      isPending: false,
+
+   53      date: 'May 12',
+   54:     primaryCurrency: '18.75 ETH',
+   55      senderAddress: '0x31b98d14007bdee637298086988a0bbd31184523',
+   56      recipientAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   57:     secondaryCurrency: '18.75 ETH',
+   58      isPending: false,
+
+   64      date: 'May 8',
+   65:     primaryCurrency: '0 ETH',
+   66      senderAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   67      recipientAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   68:     secondaryCurrency: '0 ETH',
+   69      isPending: false,
+
+   75      date: 'May 24',
+   76:     primaryCurrency: '1 ETH',
+   77      senderAddress: '0xee014609ef9e09776ac5fe00bdbfef57bcdefebb',
+   78      recipientAddress: '0x9eca64466f257793eaa52fcfff5066894b76a149',
+   79:     secondaryCurrency: '1 ETH',
+   80      isPending: false,
+
+  104        } else if (selector === getNativeCurrency) {
+  105:         return 'ETH'
+  106        } else if (selector === getCurrentCurrency) {
+  107:         return 'ETH'
+  108        } else {
+
+ui/app/hooks/tests/useUserPreferencedCurrency.test.js:
+   11        useNativeCurrencyAsPrimaryCurrency: true,
+   12:       nativeCurrency: 'ETH',
+   13        showFiat: true,
+
+   18      result: {
+   19:       currency: 'ETH',
+   20        numberOfDecimals: 6,
+
+   25        useNativeCurrencyAsPrimaryCurrency: false,
+   26:       nativeCurrency: 'ETH',
+   27        showFiat: true,
+
+   39        useNativeCurrencyAsPrimaryCurrency: true,
+   40:       nativeCurrency: 'ETH',
+   41        showFiat: true,
+
+   55        useNativeCurrencyAsPrimaryCurrency: false,
+   56:       nativeCurrency: 'ETH',
+   57        showFiat: true,
+
+   65      result: {
+   66:       currency: 'ETH',
+   67        numberOfDecimals: 3,
+
+   72        useNativeCurrencyAsPrimaryCurrency: false,
+   73:       nativeCurrency: 'ETH',
+   74        showFiat: false,
+
+   79      result: {
+   80:       currency: 'ETH',
+   81        numberOfDecimals: 6,
+
+   86        useNativeCurrencyAsPrimaryCurrency: false,
+   87:       nativeCurrency: 'ETH',
+   88        showFiat: true,
+
+  100        useNativeCurrencyAsPrimaryCurrency: false,
+  101:       nativeCurrency: 'ETH',
+  102        showFiat: true,
+
+ui/app/pages/confirm-token-transaction-base/confirm-token-transaction-base.component.js:
+  11  import { getWeiHexFromDecimalValue } from '../../helpers/utils/conversions.util'
+  12: import { ETH, PRIMARY } from '../../helpers/constants/common'
+  13  
+
+  51        value: decimalEthValue,
+  52:       fromCurrency: ETH,
+  53:       fromDenomination: ETH,
+  54      })
+
+ui/app/selectors/tests/custom-gas.test.js:
+   81              feeInSecondaryCurrency: '$0.01',
+   82:             feeInPrimaryCurrency: '0.0000525 ETH',
+   83              timeEstimate: '~6 min 36 sec',
+
+   87              gasEstimateType: 'AVERAGE',
+   88:             feeInPrimaryCurrency: '0.000084 ETH',
+   89              feeInSecondaryCurrency: '$0.02',
+
+   95              feeInSecondaryCurrency: '$0.03',
+   96:             feeInPrimaryCurrency: '0.000105 ETH',
+   97              timeEstimate: '~3 min 18 sec',
+
+  131              feeInSecondaryCurrency: '$0.27',
+  132:             feeInPrimaryCurrency: '0.000105 ETH',
+  133              timeEstimate: '~13 min 12 sec',
+
+  136            {
+  137:             feeInPrimaryCurrency: '0.000147 ETH',
+  138              feeInSecondaryCurrency: '$0.38',
+
+  145              feeInSecondaryCurrency: '$0.54',
+  146:             feeInPrimaryCurrency: '0.00021 ETH',
+  147              timeEstimate: '~6 min 36 sec',
+
+  184              feeInSecondaryCurrency: '',
+  185:             feeInPrimaryCurrency: '0.000105 ETH',
+  186              timeEstimate: '~13 min 12 sec',
+
+  190              gasEstimateType: 'AVERAGE',
+  191:             feeInPrimaryCurrency: '0.000147 ETH',
+  192              feeInSecondaryCurrency: '',
+
+  198              feeInSecondaryCurrency: '',
+  199:             feeInPrimaryCurrency: '0.00021 ETH',
+  200              timeEstimate: '~6 min 36 sec',
+
+  237              feeInSecondaryCurrency: '$0.27',
+  238:             feeInPrimaryCurrency: '0.000105 ETH',
+  239              timeEstimate: '~13 min 12 sec',
+
+  243              gasEstimateType: 'AVERAGE',
+  244:             feeInPrimaryCurrency: '0.000147 ETH',
+  245              feeInSecondaryCurrency: '$0.38',
+
+  251              feeInSecondaryCurrency: '$0.54',
+  252:             feeInPrimaryCurrency: '0.00021 ETH',
+  253              timeEstimate: '~6 min 36 sec',
+
+  290              feeInSecondaryCurrency: '$0.27',
+  291:             feeInPrimaryCurrency: '0.000105 ETH',
+  292              timeEstimate: '~13 min 12 sec',
+
+  296              gasEstimateType: 'AVERAGE',
+  297:             feeInPrimaryCurrency: '0.000147 ETH',
+  298              feeInSecondaryCurrency: '$0.38',
+
+  304              feeInSecondaryCurrency: '$0.54',
+  305:             feeInPrimaryCurrency: '0.00021 ETH',
+  306              timeEstimate: '~6 min 36 sec',
+
+  356              feeInSecondaryCurrency: '$0.13',
+  357:             feeInPrimaryCurrency: '0.00052 ETH',
+  358              gasEstimateType: 'SLOW',
+
+  362              feeInSecondaryCurrency: '$0.16',
+  363:             feeInPrimaryCurrency: '0.00063 ETH',
+  364              gasEstimateType: 'AVERAGE',
+
+  368              feeInSecondaryCurrency: '$0.27',
+  369:             feeInPrimaryCurrency: '0.00105 ETH',
+  370              gasEstimateType: 'FAST',
+
+  406              feeInSecondaryCurrency: '$2.68',
+  407:             feeInPrimaryCurrency: '0.00105 ETH',
+  408              gasEstimateType: 'SLOW',
+
+  412              feeInSecondaryCurrency: '$4.03',
+  413:             feeInPrimaryCurrency: '0.00157 ETH',
+  414              gasEstimateType: 'AVERAGE',
+
+  418              feeInSecondaryCurrency: '$5.37',
+  419:             feeInPrimaryCurrency: '0.0021 ETH',
+  420              gasEstimateType: 'FAST',
+
+  456              feeInSecondaryCurrency: '',
+  457:             feeInPrimaryCurrency: '0.00105 ETH',
+  458              gasEstimateType: 'SLOW',
+
+  462              feeInSecondaryCurrency: '',
+  463:             feeInPrimaryCurrency: '0.00157 ETH',
+  464              gasEstimateType: 'AVERAGE',
+
+  468              feeInSecondaryCurrency: '',
+  469:             feeInPrimaryCurrency: '0.0021 ETH',
+  470              gasEstimateType: 'FAST',
+
+  506              feeInSecondaryCurrency: '$2.68',
+  507:             feeInPrimaryCurrency: '0.00105 ETH',
+  508              gasEstimateType: 'SLOW',
+
+  512              feeInSecondaryCurrency: '$4.03',
+  513:             feeInPrimaryCurrency: '0.00157 ETH',
+  514              gasEstimateType: 'AVERAGE',
+
+  518              feeInSecondaryCurrency: '$5.37',
+  519:             feeInPrimaryCurrency: '0.0021 ETH',
+  520              gasEstimateType: 'FAST',
+
+  556              feeInSecondaryCurrency: '$2.68',
+  557:             feeInPrimaryCurrency: '0.00105 ETH',
+  558              gasEstimateType: 'SLOW',
+
+  562              feeInSecondaryCurrency: '$4.03',
+  563:             feeInPrimaryCurrency: '0.00157 ETH',
+  564              gasEstimateType: 'AVERAGE',
+
+  568              feeInSecondaryCurrency: '$5.37',
+  569:             feeInPrimaryCurrency: '0.0021 ETH',
+  570              gasEstimateType: 'FAST',
